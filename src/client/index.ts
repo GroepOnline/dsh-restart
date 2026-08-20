@@ -53,8 +53,13 @@ export function apply(ctx: Context): void {
   const store: SnapshotStore<RestartCardState> = createSnapshotStore(project())
   scope.subscribe(() => { store.set(project()) })
 
-  ctx.slots.inject('settings.plugin.item', () => ctx.slots.register({
+  // `key` binds this card to the `dsh-restart` settings namespace the Host
+  // reports via settingsScope.describe(). Older @deepseek-ai/dsh-client-ui-slots
+  // (<=0.1.0-rc.6) types omit `key`, so the options object is cast to keep the
+  // build green across peer versions; the runtime honours `key` regardless.
+  const itemOptions = {
     name: 'settings.plugin.item',
+    key: 'dsh-restart',
     id: 'dsh-restart',
     order: 40,
     locale: NS,
@@ -63,5 +68,6 @@ export function apply(ctx: Context): void {
       set: (field: string, value: unknown) => { void scope.set(field, value) },
       clear: (field: string) => { void scope.unset(field) },
     }),
-  }, SettingsCard))
+  } as any
+  ctx.slots.inject('settings.plugin.item', () => ctx.slots.register(itemOptions, SettingsCard))
 }
