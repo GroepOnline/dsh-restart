@@ -1,7 +1,7 @@
 {
   "name": "dsh-restart",
   "version": "0.1.0",
-  "description": "DSH 重启插件：可配置的重启方式（Node 原生 / 旧 PowerShell 适配）、重启后自动继续的提示词、可选看门狗自动拉起。",
+  "description": "DSH \u91cd\u542f\u63d2\u4ef6\uff1a\u53ef\u914d\u7f6e\u7684\u91cd\u542f\u65b9\u5f0f\uff08Node \u539f\u751f / \u65e7 PowerShell \u9002\u914d\uff09\u3001\u91cd\u542f\u540e\u81ea\u52a8\u7ee7\u7eed\u7684\u63d0\u793a\u8bcd\u3001\u53ef\u9009\u770b\u95e8\u72d7\u81ea\u52a8\u62c9\u8d77\u3002",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -79,14 +79,30 @@
     "react-dom": "^18.2.0"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/cordis": { "optional": true },
-    "@deepseek-ai/dsh-client-locale": { "optional": true },
-    "@deepseek-ai/dsh-client-runtime": { "optional": true },
-    "@deepseek-ai/dsh-client-ui-settings": { "optional": true },
-    "@deepseek-ai/dsh-client-ui-settings-plugins": { "optional": true },
-    "@deepseek-ai/dsh-client-ui-slots": { "optional": true },
-    "react": { "optional": true },
-    "react-dom": { "optional": true }
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-locale": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-runtime": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-settings": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-settings-plugins": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-slots": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -107,5 +123,11 @@
     "tsdown": "^0.22.2",
     "typescript": "^5.6.0"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@9.15.9",
+  "pnpm": {
+    "overrides": {
+      "@deepseek-ai/dsh-client-connection": "0.1.2-rc.1",
+      "js-yaml": "4.3.2"
+    }
+  }
 }
